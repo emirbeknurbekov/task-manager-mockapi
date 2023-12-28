@@ -10,8 +10,9 @@ const AddTask = () => {
 
   const handleAddTask = async () => {
     try {
-      await api.post("/tasks", { title, description });
-      navigate("/");
+      const userId = localStorage.getItem("userId");
+      await api.post("/tasks", { title, description, userId });
+      navigate("/task-page");
     } catch (error) {
       console.error("Error adding task:", error.message);
     }

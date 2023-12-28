@@ -12,11 +12,11 @@ const MainRoutes = () => {
     <>
       <Routes>
         <Route element={<MainLayout />}>
-          <Route path="/" element={<TaskPage />} />
+          <Route path="/" element={<RegisterPage />} />
         </Route>
 
         <Route path="login" element={<LoginPage />} />
-        <Route path="register" element={<RegisterPage />} />
+        <Route path="task-page" element={<TaskPage />} />
         <Route path="add-task" element={<AddTask />} />
         <Route path={`edit-task/:taskId`} element={<EditTask />} />
       </Routes>

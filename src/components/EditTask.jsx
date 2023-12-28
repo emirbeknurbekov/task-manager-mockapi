@@ -14,7 +14,8 @@ const EditTask = () => {
     const fetchTask = async () => {
       try {
         if (taskId) {
-          const response = await api.get(`/tasks/${taskId}`);
+          const userId = localStorage.getItem("userId");
+          const response = await api.get(`/users/${userId}/tasks/${taskId}`);
           console.log("Fetched task:", response.data);
           setTitle(response.data.title);
           setDescription(response.data.description);
@@ -32,7 +33,7 @@ const EditTask = () => {
       if (taskId) {
         console.log("Editing task with ID:", taskId);
         await api.put(`/tasks/${taskId}`, { title, description });
-        navigate("/");
+        navigate("/task-page");
       }
     } catch (error) {
       console.error("Error editing task:", error.message);

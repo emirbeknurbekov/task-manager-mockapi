@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import api from "../api";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
+  const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -9,6 +11,7 @@ const Register = () => {
     try {
       const response = await api.post("/users", { username, password });
       console.log(response.data);
+      navigate("/login");
     } catch (error) {
       console.error("Registration failed:", error.message);
     }
@@ -28,6 +31,13 @@ const Register = () => {
         onChange={(e) => setPassword(e.target.value)}
       />
       <button onClick={handleRegister}>Register</button>
+      <button
+        onClick={() => {
+          navigate("/login");
+        }}
+      >
+        Login
+      </button>
     </div>
   );
 };

@@ -14,11 +14,12 @@ const Login = () => {
       });
 
       if (response.data.length > 0) {
+        localStorage.setItem("userId", response.data[0].id);
         console.log("Login successful");
+        navigate("/task-page");
       } else {
         console.error("Invalid credentials");
       }
-      navigate("/");
     } catch (error) {
       console.error("Login failed:", error.message);
     }
